@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="kodingan nya agak lain ya wkwwkkw , sengaja supaya sebenar nya ini component yang w buat secara terpisah||simpel responsive web streaming anime || termux indonesia">
+    <meta name="author" content="ryugenxd">
+    <title>OtakuAnime Indo V1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body{
+            background-color:rgb(0, 123, 255);
+            background-repeat: no-repeat;
+            background-position: start;
+            background-size: cover;
+            background-image: url("./bg.jpg");
+        }
+        .none{
+            display: none;
+        }
+        .active{
+            display:flex;
+        }
+        .header{
+            top:0;
+            width:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: fixed;
+            min-height:10vh;
+            z-index:99;
+        }
+        .navbar{
+            width:100%;
+            display: flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items: center;
+            user-select: none;
+            backdrop-filter:blur(4px);
+        }
+        .brand{
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            font-weight: 200;
+            font-size:1.5rem;
+            color: whitesmoke;
+            text-shadow: -3px -3px  4px rgb(51, 70, 153),3px 3px 7px rgb(0, 123, 255);
+        }
+        .nav-end-flush{
+            width:100%;
+            display: flex;
+            justify-content: flex-end;
+            padding:1rem;
+        }
+        .nav-btn{
+            font-size:40px;
+            font-weight: 700;
+            color: white;
+        }
+        .nav-links{
+            width:100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-link{
+            padding:1rem;
+            text-decoration: none;
+            color: white;
+        }
+        @media only screen and ( min-width:700px) {
+            .nav-btn{
+                display: none;
+            }
+            .brand{
+                font-size: 2rem;
+            }
+            .nav-links{
+                /* padding:1rem; */
+                display:flex;
+                flex-direction: row;
+                justify-content: end;
+            }
+            .nav-item{
+                background-color:rgb(47, 142, 210);
+                box-shadow: -3px -3px  4px rgb(51, 70, 153),3px 3px 7px rgb(0, 123, 255);
+                margin: 1rem;
+            }
+            .nav-item:hover{
+                color: rgb(163, 184, 195);
+                cursor: pointer;
+                background-color:rgb(60, 84, 238);
+                box-shadow: -3px -3px 4px rgb(0, 6, 128) ,3px 3px 7px rgb(0, 41, 95);
+        
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-end-flush">
+                <div class="brand">
+                    OtakuAnime Indo V1
+                </div>
+                <i class="fa-solid fa-bars nav-btn"></i>
+            </div>
+            <div class="nav-links none" id="navliks">
+                <a href="#home" class="nav-item nav-link">Home</a>
+                <a href="#" class="nav-item nav-link">Ongoing</a>
+                <a href="#start" class="nav-item nav-link">Anime List</a>
+                <a href="#" class="nav-item nav-link">Gendre List</a>
+            </div>
+        </nav>
+    </header>
+    <script>
+        const buttonNavbar = document.querySelectorAll(".nav-btn")[0];
+        const navLinks = document.getElementById("navliks");
+        buttonNavbar.addEventListener("click",()=>{
+            if(navLinks.classList.contains("none")){
+                navLinks.classList.remove("none");
+                navLinks.classList.add("active");
+            }else{
+                navLinks.classList.remove("active");
+                navLinks.classList.add("none");
+            }
+        });
+    </script>
+    <style>
+    .jumbotron{
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        padding:1rem;
+        min-height:100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .jumbotron-title{
+        text-transform: capitalize;
+        color: azure;
+        font-weight: 900;
+        text-shadow: -3px -3px 4px rgb(0, 123, 255), 3px 3px 7px rebeccapurple;
+    }
+    .jumbotron-button{
+        text-decoration: none;
+        margin-top: 20vh;
+        padding: 1rem;
+        border: none;
+        outline: none;
+        font-weight: 900;
+        color: azure;
+        text-transform: capitalize;
+        text-shadow: 1px 1px 1px wheat;
+        background-color: rgb(0, 123, 255);
+        box-shadow: -3px -3px  4px rgb(51, 70, 153),3px 3px 7px rgb(0, 123, 255);
+    }
+    .jumbotron-button:hover{
+        text-shadow:none;
+        color: rgb(163, 184, 195);
+        cursor: pointer;
+        background-color:rgb(60, 84, 238);
+        box-shadow: -3px -3px 4px rgb(0, 6, 128) ,3px 3px 7px rgb(0, 41, 95);
+    }
+    @media only screen and (max-width:410px){
+    .jumbotron-title{
+        font-size:20px;
+    }
+    }
+    @media only screen and (max-width:514px){
+        .jumbotron{
+            background-image: none;
+        }
+    }
+    </style>
+    <div class="jumbotron" id="home">
+        <h1 class="jumbotron-title">
+            OtakuAnime Indo V1
+        </h1>
+        <a href="#start" class="jumbotron-button">
+            Mulai Nonton Anime
+        </a>
+    </div>
+    <style>
+        .up{
+    transform: translateY(100%);
+    }
+    .down{
+        transform: translateY(-100%);
+    }
+    .right{
+        transform: translateX(100%);
+    }
+
+    .left{
+        transform: translateX(-100%);
+    }
+
+    .hide {
+        opacity: 0;
+        filter: blur(5px);
+        transition: all 0.5s;
+    }
+    .show {
+        filter: blur(0);
+        transform: translateX(0);
+        transform: translateY(0);
+        transition-delay:200ms;
+        opacity: 1;
+    }
+    .section{
+        display: grid;
+        place-items: center;
+        align-content: center;
+        min-height:100vh;
+        overflow-x: hidden;
+    }
+
+    @media(prefers-reduce-motion){
+        .hide{
+            transition: none;
+        }
+    }
+    </style>
+    <section class="section" id="start">
+        <style>
+        .cards{
+            width: 100%;
+            padding:1rem;
+            background-color: rgb(37, 132, 205);
+            display: grid;
+            min-height:150px;
+            grid-template-columns: repeat(3,1fr);
+            gap:1rem;
+
+        }
+        .card{
+            padding:1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+        .card-img{
+            width:100%;
+            max-height:200px;
+            object-fit: contain;
+        }
+        .card-title{
+            padding:1rem;
+            text-align: center;
+            color: white;
+        }
+
+        @media only screen and (max-width:500px) {
+            .cards{
+                grid-template-columns: repeat(2,1fr);
+            }
+            .card-title{
+                font-size:0.6rem;
+            }
+        }
+
+        @media only screen and (max-width:300px) {
+            .cards{
+                grid-template-columns: repeat(1,1fr);
+            }
+            .card-title{
+                font-size:0.6rem;
+            }
+        }
+        </style>
+        <div class="cards">
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    dafaafafa
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image" class="card-img">
+                <div class="card-title">
+                    Pyscho-Pass
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+    .footer{
+        background-color: rgb(36, 103, 196);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color:white;
+    }
+
+    .footer-wrapper{
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-item{
+        padding:1rem;
+    }
+
+    .footer-img{
+        position: relative;
+       display: none;
+        width:200px;
+        height:200px;
+        object-fit: contain;
+    }
+
+    .footer-list{
+        width: 100%;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:1rem;
+    }
+    .footer-list-item{
+        font-weight: 200;
+    }
+
+    @media only screen and (max-width:300px){
+        .footer-img{
+            width:140px;
+            height:140px;
+            object-fit: contain;
+        }
+        .footer-list{
+            font-size:0.6rem;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            gap:1rem;
+        }
+    }
+    </style>
+     <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="footer-item">
+                <img class="footer-img" src="https://m.media-amazon.com/images/I/71xNvY+7JkL._AC_SY741_.jpg" alt="image">
+            </div>
+            <div class="footer-item">
+                <div class="footer-list">
+                    <div class="footer-list-item">
+                        Thanks For :
+                    </div>
+                    <div class="footer-list-item">
+                        Otakudesu
+                    </div>
+                    <div class="footer-list-item">
+                        Termux Indonesia
+                    </div>
+                    <div class="footer-list-item">
+                        RyugenXD
+                    </div>
+                    <div class="footer-list-item">
+                        Otaku Random Anime
+                    </div>
+                    <div class="footer-list-item">
+                        Nihongo Only
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-item">
+            &copy; Copyright 2023 RyugenXD
+        </div>
+    </footer>
+</body>
+</html>
